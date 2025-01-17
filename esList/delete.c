@@ -8,8 +8,9 @@ lista_t * delete(lista_t *head, lista_t *elemdel){
   ptr = head;
 
   if(head == elemdel){
+    ptr = ptr->next;
     free(head);
-    return NULL;
+    return ptr;
   }
 
   while(ptr && (ptr->next != elemdel))

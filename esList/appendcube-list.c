@@ -3,8 +3,9 @@
 #include <math.h>
 #include <list.h>
 
-lista_t * append(lista_t *, int);
+void push(lista_t *, int);
 lista_t * mklist(lista_t *);
+lista_t * append(lista_t *, int);
 void printlist(lista_t *);
 int iscube(int);
 
@@ -19,8 +20,9 @@ int main(int argc, char * argv[]){
   ptr = head;
 
   while(ptr){
+    i = 0;
     if((i = iscube(ptr->num))){
-      head = append(ptr, i);
+      push(ptr, i);
       ptr = ptr->next;
     }
     ptr = ptr->next;
@@ -34,9 +36,7 @@ int iscube(int n){
 
   int ris, i;
   i = 1;
-
-  if(n == 1)
-    return 1;
+  ris = 1;
 
   while(i <= n){
     i = pow(ris, 3);
@@ -48,6 +48,7 @@ int iscube(int n){
   return 0;
 }
 
-#include "append.c"
+#include "push.c"
 #include "mklist.c"
+#include "append.c"
 #include "printlist.c"
