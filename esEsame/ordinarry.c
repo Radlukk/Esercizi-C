@@ -16,14 +16,17 @@ int main(int argc, char * argv[]){
 
 	for(i = 0; i< DIM; i++)
 		printf("%d ", ar[i]);
+  printf("\n");
 
 	for(i = 0; i < DIM; i++){
 		if(ar[i] > ar[i+1]){
 			num = ar[i];
 			ar[i] = ar[i+1];
 			ar[i+1] = num;
-			if(i)
-				i--;
+			if(i == 1)
+				i = -1;
+      if(i == 2)
+        i = 0;
 		}
 	}
 

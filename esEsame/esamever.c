@@ -24,7 +24,7 @@ int verifica(int num){
 		ris = 0;
 
   sprintf(str, "%d", num);
-	for(i = 0, cont = 0; i < 6; i++){
+	for(i = 0, cont = 0; i < 5; i++){
 		if(str[i] > str[i+1]){
 			ris = 0;
 		}
@@ -37,4 +37,3 @@ int verifica(int num){
 
 	return ris;
 }
-		
