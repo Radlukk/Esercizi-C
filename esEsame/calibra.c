@@ -49,11 +49,11 @@ void calibra(char seq[], int * numuno, int * numdue){
   str[2] = '\0';
 
   i = atoi(str);
-  numuno = &i;
+  *numuno = i;
 
   str[0] = seq[k];
   str[1] = seq[j];
 
   i = atoi(str);
-  numdue = &i;
+  *numdue = i;
 }
