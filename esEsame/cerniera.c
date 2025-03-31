@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int cerniera(char s1[], char s2[]){
+int cerca_cerniera(char s1[], char s2[]){
 
     int pos, i, j, k;
     i = 0;
@@ -34,4 +34,31 @@ int cerniera(char s1[], char s2[]){
     }
 
     return pos; // pos per posizione
+}
+
+int cerniera(char s1[], char s2[], char s3[], int inizio){
+
+    int x, i, pos;
+
+    if((pos = cerca_cerniera(s1, s2)) == -1){
+        return pos;
+    }
+
+    i = pos;
+    while(s2[i] != '\0'){
+        i++;
+    }
+
+    x = i - pos;
+    i = 0;
+    while(s1[x+inizio+i] != '\0'){
+        s3[i] = s1[x+inizio+i];
+        i++;
+    }
+    x = 0;
+    while(x < pos){
+        s3[i+x] = s2[x];
+        x++;
+    }
+    s3[i+x] = '\0';
 }
