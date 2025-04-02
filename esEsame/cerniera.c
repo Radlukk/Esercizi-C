@@ -1,5 +1,28 @@
 #include <stdio.h>
 
+int cerca_cerniera(char [], char []);
+void cerniera(char [], char[], char [], int);
+
+int main(int argc, char * argv[]{
+
+    char *s1, *s2, s3[101];
+    int inizio;
+
+    if(argc < 3){
+        printf("errore: argomenti mancanti\n");
+        return 0;
+    }
+
+    s1 = argv[1];
+    s2 = argv[2];
+
+    inizio = cerca_cerniera(s1, s2);
+    cerniera(s1, s2, s3, inizio);
+    printf("%s\n", s3);
+
+    return 0;
+}
+
 int cerca_cerniera(char s1[], char s2[]){
 
     int pos, i, j, k;
@@ -36,27 +59,23 @@ int cerca_cerniera(char s1[], char s2[]){
     return pos; // pos per posizione
 }
 
-int cerniera(char s1[], char s2[], char s3[], int inizio){
+void cerniera(char s1[], char s2[], char s3[], int inizio){
 
-    int x, i, pos;
+    int x, i;
 
-    if((pos = cerca_cerniera(s1, s2)) == -1){
-        return pos;
-    }
-
-    i = pos;
+    i = inizio;
     while(s2[i] != '\0'){
         i++;
     }
 
-    x = i - pos;
+    x = i;
     i = 0;
-    while(s1[x+inizio+i] != '\0'){
-        s3[i] = s1[x+inizio+i];
+    while(s1[x+i] != '\0'){
+        s3[i] = s1[x+i];
         i++;
     }
     x = 0;
-    while(x < pos){
+    while(x < inizio){
         s3[i+x] = s2[x];
         x++;
     }
