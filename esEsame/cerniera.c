@@ -3,7 +3,7 @@
 int cerca_cerniera(char [], char []);
 void cerniera(char [], char[], char [], int);
 
-int main(int argc, char * argv[]{
+int main(int argc, char * argv[]){
 
     char *s1, *s2, s3[101];
     int inizio;
@@ -68,7 +68,7 @@ void cerniera(char s1[], char s2[], char s3[], int inizio){
         i++;
     }
 
-    x = i;
+    x = i - inizio;
     i = 0;
     while(s1[x+i] != '\0'){
         s3[i] = s1[x+i];
