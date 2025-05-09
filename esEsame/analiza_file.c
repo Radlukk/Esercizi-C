@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 int main(int argc, char *argv[]){
 
@@ -6,13 +7,16 @@ int main(int argc, char *argv[]){
     char bigf[1000];
     FILE * fin;
     maxc = 0;
+    numfclose = 0;
+    numfvoid = 0;
 
-    numf = argc;
     argc--;
+    numf = argc;
 
     while(argc){
-        fin = fopen(agrv[argc], "r");
+        fin = fopen(argv[argc], "r");
         if(fin){
+            c = 0;
             while(feof(fin)){
                 c++;
             }
@@ -20,7 +24,8 @@ int main(int argc, char *argv[]){
                 numfvoid++;
             }
             else if(c > maxc){
-                bigf = argv[argc];
+                strcpy(bigf, argv[argc]);
+                maxc = c;
             }
             fclose(fin);
         }
@@ -30,5 +35,11 @@ int main(int argc, char *argv[]){
         argc--;
     }
 
-    printf("...");
+    printf("Number of listed files: %d\n", numf);
+    printf("Number of unreadable files: %d\n", numfclose);
+    printf("Number of void files: %d\n", numfvoid);
+    printf("Longhest file %s\nNumber of character is %d\n", bigf, maxc);
+
+    return 0;
 }
+
