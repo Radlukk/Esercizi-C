@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 int main(int argc, char *argv[]){
 
@@ -14,25 +15,26 @@ int main(int argc, char *argv[]){
     numf = argc;
 
     while(argc){
-        fin = fopen(argv[argc], "r");
-        if(fin){
-            c = 0;
-            while(feof(fin)){
-                c++;
-            }
-            if(!c){
-                numfvoid++;
-            }
-            else if(c > maxc){
-                strcpy(bigf, argv[argc]);
-                maxc = c;
-            }
-            fclose(fin);
+      fin = fopen(argv[argc], "r");
+      if(fin){
+        c = 0;
+        int ch;
+        while((ch = fgetc(fin)) != EOF){
+          c++;
         }
-        else{
-            numfclose++;
+        if(!c){
+          numfvoid++;
         }
-        argc--;
+        else if(c > maxc){
+          strcpy(bigf, argv[argc]);
+          maxc = c;
+        }
+        fclose(fin);
+      }
+      else{
+        numfclose++;
+      }
+      argc--;
     }
 
     printf("Number of listed files: %d\n", numf);
